@@ -13,30 +13,31 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <h6 class="h2 text-white d-inline-block mb-0">Welcome {{ request.user.username }}</h6>
+              <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Default</li>
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Board</li>
                 </ol>
-              </nav>
+              </nav> -->
             </div>
-            <div class="col-lg-6 col-5 text-right">
+            <!-- <div class="col-lg-6 col-5 text-right">
               <a href="#" class="btn btn-sm btn-neutral">New</a>
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-            </div>
+            </div> -->
           </div>
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
+                <a href="/tables.html">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Cumlative CGPA/%</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ cgpa_or_percentage }}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -45,20 +46,22 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48% increment</span>
+                    <span class="text-nowrap">Click for Details</span>
                   </p>
                 </div>
               </div>
             </div>
+          </a>
             <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
+                <a href="/tables.html">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Class</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ class_division }} Division</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -67,20 +70,22 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> top 13%</span>
+                    <span class="text-nowrap">Click for details</span>
                   </p>
                 </div>
               </div>
             </div>
+          </a>
             <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
+                <a href="/tables.html">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Dues</h5>
+                      <span class="h2 font-weight-bold mb-0">Rs.{{ CurrentStudent.due_amount }}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -89,20 +94,22 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> Late fee applied</span>
+                    <span class="text-nowrap">Click for details</span>
                   </p>
                 </div>
               </div>
             </div>
+          </a>
             <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
+                <a href="/tables.html">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Ticket Center</h5>
+                      <span class="h2 font-weight-bold mb-0">{{ CurrentStudent.total_tickets_closed }}/{{ CurrentStudent.total_tickets_opened }} resolved</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -111,19 +118,29 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100% resolution</span>
+                    <span class="text-nowrap">Click for details</span>
                   </p>
                 </div>
               </div>
+            </div>
+          </a>
+            <div class="col-md-12 text-center">
+            <a href="documents/">
+            <button type="button" class="btn btn-primary btn-lg">Click for Certificates/Documents</button></a>
+            <a href="/icons.html">
+            <button type="button" class="btn btn-secondary btn-lg">Click for other services/requests </button></a>
+            
             </div>
           </div>
         </div>
       </div>
     </div>
 
+          
+
     <!-- Page content -->
-    <div class="container-fluid mt--6">
+    <!-- <div class="container-fluid mt--6">
       <div class="row">
         <div class="col-xl-8">
           <div class="card bg-default">
@@ -151,11 +168,11 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
+            <div class="card-body"> -->
+              <!-- ##################Chart -->
+              <!-- <div class="chart"> -->
                 <!-- Chart wrapper -->
-                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+                <!-- <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
               </div>
             </div>
           </div>
@@ -170,9 +187,9 @@
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
+            <div class="card-body"> -->
+              <!-- ###################Chart -->
+              <!-- <div class="chart">
                 <canvas id="chart-bars" class="chart-canvas"></canvas>
               </div>
             </div>
@@ -192,9 +209,9 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
+            <div class="table-responsive"> -->
+              <!-- ####################Projects table -->
+              <!-- <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Page name</th>
@@ -291,9 +308,9 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
+            <div class="table-responsive"> -->
+              <!-- ##############################Projects table -->
+              <!-- <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Referral</th>
@@ -397,7 +414,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       {% include "includes/footer.html" %}
 
